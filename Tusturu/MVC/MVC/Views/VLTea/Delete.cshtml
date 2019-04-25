@@ -1,0 +1,48 @@
+﻿@model MVC.Models.BubleTea
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Xóa</h2>
+
+<h3>Bạn có muốn xóa?</h3>
+<div>
+    <h4>BubleTea</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên trà sữa
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            Giá
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+           Topping
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Topping)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
