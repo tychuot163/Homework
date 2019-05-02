@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>VLU TEA</h2>
+<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -12,13 +12,13 @@
 <table class="table">
     <tr>
         <th>
-            Tên trà sữa
+            @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
-            Giá bán
+            @Html.DisplayNameFor(model => model.Price)
         </th>
         <th>
-            Topping thêm vào
+            @Html.DisplayNameFor(model => model.Topping)
         </th>
         <th></th>
     </tr>
@@ -35,9 +35,9 @@
             @Html.DisplayFor(modelItem => item.Topping)
         </td>
         <td>
-            @Html.ActionLink("Chỉnh sửa", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Chi tiết", "Details", new { id=item.id }) |
-            @Html.ActionLink("Xóa", "Delete", new { id=item.id })
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
         </td>
     </tr>
 }
