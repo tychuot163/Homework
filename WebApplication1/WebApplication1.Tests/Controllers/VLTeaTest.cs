@@ -91,17 +91,20 @@ namespace WebApplication1.Tests.Controllers
         [TestMethod]
         public void TestEdit()
         {
+            var db = new CS4PEEntities();
             var controller = new VLTeaController();
-            {
-                var db = new CS4PEEntities();
-                var ketqua = controller.Edit(0);
-                Assert.IsInstanceOfType(ketqua, typeof(HttpNotFoundResult));
-                var item = db.BubleTeas.First();
-                var kq = controller.Edit(item.id) as ViewResult;
-                Assert.IsNotNull(kq);
-                var model = kq.Model as BubleTea;
-                Assert.AreEqual(item.id, model.id);
-            }
+            var result = controller.Edit(0);
+            Assert.IsInstanceOfType(result, typeof(HttpNotFoundResult));
+            var item = db.BubleTeas.First();
+            result = controller.Edit(item.id);
+            var view = result as ViewResult;
+            Assert.IsNotNull(view);
+            var model = view.Model as BubleTea;
+            Assert.IsNotNull(model);
+            Assert.AreEqual(item.id, model.id);
+            Assert.AreEqual(item.Name, model.Name);
+            Assert.AreEqual(item.Topping, model.Topping);
+            Assert.AreEqual(item.Price, model.Price);
         }
         [TestMethod]
         public void TestEditP()
